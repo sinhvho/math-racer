@@ -18,7 +18,12 @@ namespace MathRacer
         private void Start()
         {
             button = GetComponent<Button>();
-            button.onClick.AddListener(OnButtonClicked);
+            button?.onClick.AddListener(OnButtonClicked);
+        }
+
+        private void OnDestroy()
+        {
+            button?.onClick.RemoveListener(OnButtonClicked);
         }
 
         private void OnButtonClicked()
